@@ -23,3 +23,15 @@ app.get("/api/slots", async (req, res) => {
 
   res.json({ slots });
 });
+
+app.post("/api/slots", async (req, res) => {
+  const { startTime, endTime, isBooked } = req.body;
+
+  const newSlot = await TimeSlot.create({
+    startTime,
+    endTime,
+    isBooked,
+  });
+
+  res.json({ newSlot });
+});
