@@ -25,7 +25,7 @@ const AvailableTimeSlots = () => {
           <p>
             {slot.startTime} - {slot.endTime}
           </p>
-          <Link to="/book-slot">
+          <Link to={`/book-slot/${slot._id}`} state={slot}>
             <button className="p-2 text-lg bg-gray-400 border-2 border-black">
               Book
             </button>

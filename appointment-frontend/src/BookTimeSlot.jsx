@@ -1,13 +1,18 @@
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 
 const BookTimeSlot = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const { id } = useParams();
 
   const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
+      startTime: state.startTime,
+      endTime: state.endTime,
+      slotId: id,
     },
     onSubmit: async (values) => {
       await fetch("http://localhost:3000/api/appointments", {
@@ -23,7 +28,9 @@ const BookTimeSlot = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">Book Time Slot</h1>
+      <h1 className="text-2xl font-bold">
+        Book Time Slot {state.startTime} - {state.endTime}
+      </h1>
       <form onSubmit={formik.handleSubmit}>
         <label>Name</label>
         <input

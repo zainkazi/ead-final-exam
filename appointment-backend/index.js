@@ -19,7 +19,7 @@ try {
 }
 
 app.get("/api/slots", async (req, res) => {
-  const slots = await TimeSlot.find();
+  const slots = await TimeSlot.find({ isBooked: false });
 
   res.json({ slots });
 });
@@ -43,11 +43,21 @@ app.get("/api/appointments", async (req, res) => {
 });
 
 app.post("/api/appointments", async (req, res) => {
-  const { name, email } = req.body;
+  const { name, email, startTime, endTime, slotId } = req.body;
+
+  await TimeSlot.updateOne(
+    { _id: slotId },
+    {
+      isBooked: true,
+    }
+  );
 
   const newAppointment = await Appointment.create({
     name,
     email,
+    startTime,
+    endTime,
+    slotId,
   });
 
   res.json({ newAppointment });
