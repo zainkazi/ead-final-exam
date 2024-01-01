@@ -35,3 +35,9 @@ app.post("/api/slots", async (req, res) => {
 
   res.json({ newSlot });
 });
+
+app.get("/api/appointments", async (req, res) => {
+  const appointments = await Appointment.find();
+
+  res.json({ appointments });
+});
