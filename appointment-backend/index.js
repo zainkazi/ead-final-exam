@@ -41,3 +41,14 @@ app.get("/api/appointments", async (req, res) => {
 
   res.json({ appointments });
 });
+
+app.post("/api/appointments", async (req, res) => {
+  const { name, email } = req.body;
+
+  const newAppointment = await Appointment.create({
+    name,
+    email,
+  });
+
+  res.json({ newAppointment });
+});
