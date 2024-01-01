@@ -1,17 +1,16 @@
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
-const CreateTimeSlot = () => {
+const BookTimeSlot = () => {
   const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
-      startTime: "",
-      endTime: "",
-      isBooked: false,
+      name: "",
+      email: "",
     },
     onSubmit: async (values) => {
-      await fetch("http://localhost:3000/api/slots", {
+      await fetch("http://localhost:3000/api/appointments", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,35 +23,35 @@ const CreateTimeSlot = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">Create Time Slot</h1>
+      <h1 className="text-2xl font-bold">Book Time Slot</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label>Start Time</label>
+        <label>Name</label>
         <input
           type="text"
-          id="startTime"
-          name="startTime"
+          id="name"
+          name="name"
           className="border border-black"
           onChange={formik.handleChange}
-          value={formik.values.startTime}
+          value={formik.values.name}
         />
-        <label>End Time</label>
+        <label>Email</label>
         <input
           type="text"
-          id="endTime"
-          name="endTime"
+          id="email"
+          name="email"
           className="border border-black"
           onChange={formik.handleChange}
-          value={formik.values.endTime}
+          value={formik.values.email}
         />
         <button
           type="submit"
           className="p-2 text-lg bg-gray-400 border-2 border-black"
         >
-          Create Slot
+          Create Appoinment
         </button>
       </form>
     </div>
   );
 };
 
-export default CreateTimeSlot;
+export default BookTimeSlot;

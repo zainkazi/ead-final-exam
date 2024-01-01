@@ -16,7 +16,7 @@ const BookedAppointments = () => {
 
   return (
     <div>
-      <h1>Booked Appointments</h1>
+      <h1 className="text-2xl font-bold">Booked Appointments</h1>
       {appointments.map((appointment) => (
         <div
           key={appointment._id}

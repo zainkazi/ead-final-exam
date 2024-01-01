@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const AvailableTimeSlots = () => {
   const [slots, setSlots] = useState([]);
@@ -15,7 +16,7 @@ const AvailableTimeSlots = () => {
 
   return (
     <div>
-      <h1>Booked Appointments</h1>
+      <h1 className="text-2xl font-bold">Available Time Slots</h1>
       {slots.map((slot) => (
         <div
           key={slot._id}
@@ -24,6 +25,11 @@ const AvailableTimeSlots = () => {
           <p>
             {slot.startTime} - {slot.endTime}
           </p>
+          <Link to="/book-slot">
+            <button className="p-2 text-lg bg-gray-400 border-2 border-black">
+              Book
+            </button>
+          </Link>
         </div>
       ))}
     </div>

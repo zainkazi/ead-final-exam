@@ -5,7 +5,7 @@ import { createBrowserRouter, Router, RouterProvider } from "react-router-dom";
 import BookedAppointments from "./BookedAppointments.jsx";
 import AvailableTimeSlots from "./AvailableTimeSlots.jsx";
 import CreateTimeSlot from "./CreateTimeSlot.jsx";
-import NewTimeSlot from "./NewTimeSlot.jsx";
+import NewTimeSlot from "./BookTimeSlot.jsx";
 
 const router = createBrowserRouter([
   {
