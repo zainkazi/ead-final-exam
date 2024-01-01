@@ -17,3 +17,9 @@ try {
 } catch (e) {
   console.log("Not connected", e);
 }
+
+app.get("/api/slots", async (req, res) => {
+  const slots = await TimeSlot.find();
+
+  res.json({ slots });
+});
